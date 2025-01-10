@@ -2,7 +2,6 @@ public class Main {
     public static void main(String[] args) {
 
         Car car= new Car("Toyota");
-        Car otherCar=new Car("Volvo");
         Bike bike= new Bike("Scott");
 
         Shirt shirt= new Shirt("Red", "Polo","20$");
@@ -10,6 +9,9 @@ public class Main {
 
         Pants pants= new Pants("Black", "Levis", "150$");
 
+       // car.setPrice(-1000.0);, kontrollering för runtime juttun
+
+        System.out.println("Bilen " + car.getName()+" kostar " + car.getPrice());
 
         System.out.println(car.getName()+ " is "+ car.getType());
         System.out.println(bike.getName()+ " is "+ bike.getType());
