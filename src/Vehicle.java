@@ -3,14 +3,20 @@ public class Vehicle {
 
     private  String name;
     private  String type;
-    private Double price=0.0;
-    Double discount=0.9;
+    private double price=0.0;
+    double discount=0.9;
 
 
     public Vehicle(String name, String type) {
         this.type = type;
         this.name = name;
     }
+
+    public String soundWarning(){
+        return "default sound";
+    }
+
+
 
     public String getName() {
         return name;
