@@ -25,6 +25,11 @@ public class Vehicle {
     public String getType(){
         return type;
     }
+
+    public double getGrossPrice() {
+        return discount;
+    }
+
     public double getPrice(){
         return price;
     }

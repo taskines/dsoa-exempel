@@ -32,7 +32,13 @@ public class Main {
         shop.addBike(new Bike("Helkama",90));
         shop.addBike(new Bike("Niskahiki",5000));
 
-        System.out.println("Välkommen till BikeShop! Våra cyklar;" );
+
+        shop.getBike(0).addFeature("suspension", "hardtail");
+        shop.getBike(0).addFeature("wheelsize", "24-inch");
+        //System.out.println(shop.getBike(0).getFeature("suspension"));
+        //System.out.println(shop.getBike(0).getFeature("wheelsize"));
+
+
 
         for (int i=0; i<shop.getBikeCount();i++){
 
@@ -41,7 +47,10 @@ public class Main {
                     shop.getBike(i).getPrice(),
                     shop.getBike(i).getStock()
                     );
+            System.out.println( shop.getBike(i).getFeatures());
         }
+
+    Calculator calc= new Calculator();
 
         System.exit(0);
 
