@@ -1,15 +1,21 @@
 import java.util.HashMap;
+import java.util.Random;
 
 
 public class Bike extends Vehicle implements Shoppable{
 
+    private int stock=0;
 HashMap<String,String> features=new HashMap<>();
-
+Random random = new Random();
 
     public Bike(String name, double price) {
 
         super(name,"pedaled");
         this.setPrice(price);
+        //random tal mellan 1-20
+        stock= random.nextInt(1, 20);
+        //traditionellt
+
     }
     public void addFeature(String key, String value){
 
@@ -35,7 +41,7 @@ public String getFeatures() {
 
     @Override
     public int getStock() {
-        return 0;
+        return stock;
     }
 
 

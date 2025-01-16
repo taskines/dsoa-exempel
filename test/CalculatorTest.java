@@ -9,4 +9,10 @@ class CalculatorTest {
         assertEquals(50, calc.multiply(2,25));
 
         }
+        @Test
+    void multiplyTest3ARGS() {
+        Calculator calc1 = new Calculator();
+        assertEquals(100, calc1.multiply(2,10,5));
+
+    }
     }
