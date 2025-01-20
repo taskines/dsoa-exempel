@@ -3,11 +3,9 @@ import java.util.Random;
 public class RandomNum {
 
     Random random = new Random();
-    private int number;
-    private String name;
+    public int number;
 
-    public RandomNum (String name){
-       this.name=name;
+    public RandomNum (){
        number= random.nextInt(1,100);
     }
 

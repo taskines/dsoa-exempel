@@ -27,11 +27,11 @@ public class Vehicle {
     }
 
     public double getGrossPrice() {
-        return discount;
+        return price;
     }
 
     public double getPrice(){
-        return price;
+        return price*discount;
     }
     public void setPrice(Double price){
         if(price<0)throw new RuntimeException("Bad Price!");

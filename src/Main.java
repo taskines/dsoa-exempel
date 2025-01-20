@@ -12,36 +12,30 @@ public class Main {
 
 
         //upcasting
-        Vehicle car = new Car("Toyota", 3000.0);
-        Vehicle bike = new Bike("Scott", 100);
-        Car car2 = new Car("Fiat");
-        car2.refuel();
-        Car car3 = new Car(2000.0);
-        Car car4 = new Car("Tesla", 2000.0);
-        Vehicle todaysVehicle;
-        todaysVehicle = car;
-        todaysVehicle = bike;
+        //Vehicle car = new Car("Toyota", 3000.0);
+        //Vehicle bike = new Bike("Scott", 100);
+        //Car car2 = new Car("Fiat");
+        //car2.refuel();
+        //Car car3 = new Car(2000.0);
+        //Car car4 = new Car("Tesla", 2000.0);
+        //Vehicle todaysVehicle;
+        //todaysVehicle = car;
+        //todaysVehicle = bike;
         // default-konstruktor
-        Foo foo = new Foo();
+        //Foo foo = new Foo();
         //upcasting
-        Clothing shirt = new Shirt("Red", "Polo", 100);
-        Shirt shirt2 = new Shirt("Yellow", "Nike", 99.9999);
+        //Clothing shirt = new Shirt("Red", "Polo", 100);
+        //Shirt shirt2 = new Shirt("Yellow", "Nike", 99.9999);
         //Pants pants= new Pants("Black", "Levis", "150$");
 
         BikeShop shop = new BikeShop();
-        shop.addBike(new Bike("Jopo", 600));
+        shop.addBike(BikeFactory.createExpensiveBike("Scott"));
+        shop.addBike(BikeFactory.cheapExpensiveBike("Pask"));
         shop.addBike(new Bike("Helkama", 90));
         shop.addBike(new Bike("Niskahiki", 5000));
 
 
-        // shop.getBike(0).addFeature("suspension", "hardtail");
-        //shop.getBike(0).addFeature("wheelsize", "24-inch");
-        //System.out.println(shop.getBike(0).getFeature("suspension"));
-        //System.out.println(shop.getBike(0).getFeature("wheelsize"));
-
-        Scanner scanner = new Scanner(System.in);
-
-        for (int i = 0; i < shop.getBikeCount(); i++) {
+       /* for (int i = 0; i < shop.getBikeCount(); i++) {
 
             System.out.printf("%d - %s %.2f € lagersaldo: %s\n",
                     i,
@@ -53,38 +47,55 @@ public class Main {
         }
 
 
-        System.out.println("Vilken cykel vill du köpa? (q för quit)");
-        String userInput;
 
-      /*  while (true) {
+        String userInput;
+        while (true) {
+
+            System.out.print("Vilken cykel vill du köpa? (q för quit)");
+
 
             userInput = scanner.nextLine();
 
-            try {
-                int bikeIndex = Integer.parseInt(userInput);
-                System.out.println("Grattis du äger nu en " + shop.getBike(bikeIndex).getName()
-                );
+            if (userInput.equalsIgnoreCase("q")) {
+                System.out.println("Tack, välkommen åter!");
                 break;
-            } catch (NumberFormatException e) {
-                System.out.println("Du måste ge ett heltal");
-            } catch (IndexOutOfBoundsException e) {
-                System.out.println("Det finns inte någon sådan cykel!");
-            } catch (Exception e) {
-                System.out.println("Något annat gick fel!");
             }
-            if (userInput.equalsIgnoreCase("q")){
-                System.out.println("Tack välkommen åter.");
-                System.exit(0);
+            if(!Utils.isInteger(userInput)){
+                System.out.println("Du måste ge ett heltal!");
+                continue;
             }
 
-        }   */
+            int bikeIndex = Integer.parseInt(userInput);
+            if (bikeIndex>=shop.getBikeCount()) {
+                System.out.println("Det finns ingen sådan cykel!");
+            }
+
+            System.out.printf("Grattis, du köpte en %s för %.2f\n",
+                    shop.getBike(bikeIndex).getName(),
+                    shop.getBike(bikeIndex).getPrice()
+            );
+
+            System.out.println("Det finns ingen sådan cykel!");
+
+            break;
+        } */
+
+      int userIntInput= Utils.getIntInput();
+
+        System.exit(0);
+        // shop.getBike(0).addFeature("suspension", "hardtail");
+        //shop.getBike(0).addFeature("wheelsize", "24-inch");
+        //System.out.println(shop.getBike(0).getFeature("suspension"));
+        //System.out.println(shop.getBike(0).getFeature("wheelsize"));
+
+      /*
         System.out.println("Här genereras slumptal!(q för exit)");
         String userInput1;
 
 
         while (true) {
 
-            RandomNum x= new RandomNum("number");
+            RandomNum x= new RandomNum();
             userInput1 = scanner.nextLine();
 
             {
@@ -100,19 +111,19 @@ public class Main {
 
 
         }
+*/
 
-            System.exit(0);
 
 // Konkatenering:
-            System.out.println(shirt.getBrand());
+
+    /*    System.out.println(shirt.getBrand());
             System.out.println(shirt2.getCondition());
             System.out.println(shirt2.getBrand() + " kostar " + shirt2.getPrice() + " lagersaldo: " + shirt2.getStock());
             System.out.printf("%s kostar %.2f €, lagersaldo: %d st\n",
                     shirt2.getBrand(),
                     shirt2.getPrice(),
                     shirt2.getStock());
-            // String format () returnerar en string
-            String shirtInfo = String.format("%s kostar %.2f €, lagersaldo: %d st",
+            // String format () returnerar en string             shirtInfo = String.format("%s kostar %.2f €, lagersaldo: %d st",
                     shirt2.getBrand(),
                     shirt2.getPrice(),
                     shirt2.getStock());
@@ -128,7 +139,9 @@ public class Main {
             //System.out.println(bike.soundWarning());
             //System.out.println("This shirt is "+ shirt.getColor() +" and the brand is " + shirt.getBrand()+ " the price is "+ shirt.getPrice());
             //System.out.println("This one on the other hand is "+ shirt2.getColor()+" and the brand is " + shirt2.getBrand()+" the price is "+shirt2.getPrice());
-            //System.out.println("These jeans are "+pants.getColor()+" they are made by "+ pants.getBrand()+" which is why they cost "+pants.getPrice());
+            //System.out.println("These jeans are "+pants.getColor()+" they are made by "+ pants.getBrand()+" which is why they cost "+pants.getPrice());*/
         }
+
+
     }
 
