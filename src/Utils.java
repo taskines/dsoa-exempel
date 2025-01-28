@@ -6,6 +6,7 @@ public class Utils {
         return str.matches("-?\\d+");
     }
 
+    // Overload, ingen argument
     public static int getIntInput() {
         String userInput;
 

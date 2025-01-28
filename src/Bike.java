@@ -1,20 +1,29 @@
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Random;
 
 
-public class Bike extends Vehicle implements Shoppable {
+public class Bike extends Vehicle implements Shoppable, Serializable {
 
     private int stock = 0;
     HashMap<String, String> features = new HashMap<>();
     Random random = new Random();
+    DiscountCategory discountCat =DiscountCategory.NEW;
 
     public Bike(String name, double price) {
 
         super(name, "pedaled");
         this.setPrice(price);
-        //random tal mellan 1-20
+
         stock = random.nextInt(1, 20);
-        //traditionellt
+
+
+    }
+    public Bike(String name, double price, DiscountCategory discountCat) {
+
+        super(name, "pedaled");
+        this.setPrice(price);
+        this.discountCat= discountCat;
 
     }
 
@@ -39,6 +48,21 @@ public class Bike extends Vehicle implements Shoppable {
         }
         return ret;
     }
+    @Override
+    public double getPrice(){
+        double netPrice;
+        switch(discountCat){
+            case DEMO:
+                netPrice=getGrossPrice()*0.9;
+            break;
+            case RETURNED:
+                netPrice =getGrossPrice()*0.8;
+            break;
+            default:
+                netPrice=getGrossPrice();
+        }
+        return netPrice;
+    }
 
     @Override
     public String soundWarning() {
@@ -50,5 +74,7 @@ public class Bike extends Vehicle implements Shoppable {
         return stock;
     }
 
-
+    public DiscountCategory getDiscountCat() {
+        return discountCat;
+    }
 }

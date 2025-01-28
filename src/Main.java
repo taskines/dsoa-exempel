@@ -28,20 +28,43 @@ public class Main {
         //Shirt shirt2 = new Shirt("Yellow", "Nike", 99.9999);
         //Pants pants= new Pants("Black", "Levis", "150$");
 
+
+        //FileUtils.writeTextFile("Hello file", "hello.txt");
+       // System.out.println(FileUtils.readTextFile("hello.txt"));
+
+
+       // System.exit(0);
+
+
+        Customer customer;
+        Object loadedObject=FileUtils.loadObject("customer.save");
+        if (loadedObject!= null){
+            customer= (Customer) loadedObject;
+        }else {
+        customer = new Customer(1500);
+        }
+
+        System.out.printf("Välkommen till cykelbutiken. Du har %.2f euro och %s.",
+                customer.getFunds(),
+                (customer.getCurrentBike())==null ? "ingen cykel" : customer.getCurrentBike().getName()
+                );
+
         BikeShop shop = new BikeShop();
         shop.addBike(BikeFactory.createExpensiveBike("Scott"));
         shop.addBike(BikeFactory.cheapExpensiveBike("Pask"));
-        shop.addBike(new Bike("Helkama", 90));
-        shop.addBike(new Bike("Niskahiki", 5000));
+        shop.addBike(new Bike("Helkama", 90, DiscountCategory.DEMO));
+        shop.addBike(new Bike("Niskahiki", 5000, DiscountCategory.RETURNED));
 
 
-       /* for (int i = 0; i < shop.getBikeCount(); i++) {
+       for (int i = 0; i < shop.getBikeCount(); i++) {
 
-            System.out.printf("%d - %s %.2f € lagersaldo: %s\n",
+            System.out.printf("\n%d - %s %.2f € (%.2f) lagersaldo: %s %s\n",
                     i,
                     shop.getBike(i).getName(),
                     shop.getBike(i).getPrice(),
-                    shop.getBike(i).getStock()
+                    shop.getBike(i).getGrossPrice(),
+                    shop.getBike(i).getStock(),
+                    shop.getBike(i).getDiscountCat()
             );
             System.out.println(shop.getBike(i).getFeatures());
         }
@@ -53,7 +76,7 @@ public class Main {
 
             System.out.print("Vilken cykel vill du köpa? (q för quit)");
 
-
+             Scanner scanner= new Scanner(System.in);
             userInput = scanner.nextLine();
 
             if (userInput.equalsIgnoreCase("q")) {
@@ -70,22 +93,26 @@ public class Main {
                 System.out.println("Det finns ingen sådan cykel!");
             }
 
+            if(!customer.buyBike(shop.getBike(bikeIndex))) {
+                System.out.println("Du har inte råd med den cykeln");
+                continue;
+            }
+
+
+
             System.out.printf("Grattis, du köpte en %s för %.2f\n",
                     shop.getBike(bikeIndex).getName(),
                     shop.getBike(bikeIndex).getPrice()
             );
-
-            System.out.println("Det finns ingen sådan cykel!");
-
             break;
-        } */
+        }
+        FileUtils.saveObject(customer, "customer.save");
 
-      int userIntInput= Utils.getIntInput();
+      // int userIntInput= Utils.getIntInput();  code challenge
 
-        System.exit(0);
-        // shop.getBike(0).addFeature("suspension", "hardtail");
-        //shop.getBike(0).addFeature("wheelsize", "24-inch");
-        //System.out.println(shop.getBike(0).getFeature("suspension"));
+       // shop.getBike(0).addFeature("suspension", "hardtail");
+       // shop.getBike(0).addFeature("wheelsize", "24-inch");
+       // System.out.println(shop.getBike(0).getFeature("suspension"));
         //System.out.println(shop.getBike(0).getFeature("wheelsize"));
 
       /*
