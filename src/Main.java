@@ -1,5 +1,4 @@
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -9,6 +8,41 @@ public class Main {
 
 
     public static void main(String[] args) {
+
+
+String [] testData= {"ZOZO", "Ruuben", "Kimi", "Wille"};
+String [] sortedData={"Kimi", "Ruuben", "Wille","zozo"};
+
+        Person p1= new Person(testData[0]);
+        Person p2= new Person(testData[1], p1);
+        Person p3= new Person(testData[2],p2);
+        Person p4= new Person(testData[3],p3);
+
+
+        Person current=p4;
+
+        while(current !=null){
+            System.out.println(current.getName());
+            current=current.next;
+        }
+
+
+StringArray names= new StringArray(sortedData);
+System.out.println(names.toString());
+names.add("Gollum");
+System.out.println(names.toString());
+
+names.reverse();
+System.out.println(names.toString());
+
+
+
+
+
+        System.exit(0);
+        // testa looppa olika tidskomplixitet
+        new BigO();
+
 
 
         //upcasting
@@ -30,24 +64,19 @@ public class Main {
 
 
         //FileUtils.writeTextFile("Hello file", "hello.txt");
-       // System.out.println(FileUtils.readTextFile("hello.txt"));
-
-
-       // System.exit(0);
-
-
-        Customer customer;
-        Object loadedObject=FileUtils.loadObject("customer.save");
-        if (loadedObject!= null){
-            customer= (Customer) loadedObject;
-        }else {
-        customer = new Customer(1500);
+        // System.out.println(FileUtils.readTextFile("hello.txt"));
+        //Customer customer;
+      //  Object loadedObject = FileUtils.loadObject("customer.save");
+        //if (loadedObject != null) {
+         /*   customer = (Customer) loadedObject;
+        } else {
+            customer = new Customer(1500);
         }
 
         System.out.printf("Välkommen till cykelbutiken. Du har %.2f euro och %s.",
                 customer.getFunds(),
-                (customer.getCurrentBike())==null ? "ingen cykel" : customer.getCurrentBike().getName()
-                );
+                (customer.getCurrentBike()) == null ? "ingen cykel" : customer.getCurrentBike().getName()
+        );
 
         BikeShop shop = new BikeShop();
         shop.addBike(BikeFactory.createExpensiveBike("Scott"));
@@ -56,7 +85,7 @@ public class Main {
         shop.addBike(new Bike("Niskahiki", 5000, DiscountCategory.RETURNED));
 
 
-       for (int i = 0; i < shop.getBikeCount(); i++) {
+        for (int i = 0; i < shop.getBikeCount(); i++) {
 
             System.out.printf("\n%d - %s %.2f € (%.2f) lagersaldo: %s %s\n",
                     i,
@@ -70,34 +99,32 @@ public class Main {
         }
 
 
-
         String userInput;
         while (true) {
 
             System.out.print("Vilken cykel vill du köpa? (q för quit)");
 
-             Scanner scanner= new Scanner(System.in);
+            Scanner scanner = new Scanner(System.in);
             userInput = scanner.nextLine();
 
             if (userInput.equalsIgnoreCase("q")) {
                 System.out.println("Tack, välkommen åter!");
                 break;
             }
-            if(!Utils.isInteger(userInput)){
+            if (!Utils.isInteger(userInput)) {
                 System.out.println("Du måste ge ett heltal!");
                 continue;
             }
 
             int bikeIndex = Integer.parseInt(userInput);
-            if (bikeIndex>=shop.getBikeCount()) {
+            if (bikeIndex >= shop.getBikeCount()) {
                 System.out.println("Det finns ingen sådan cykel!");
             }
 
-            if(!customer.buyBike(shop.getBike(bikeIndex))) {
+            if (!customer.buyBike(shop.getBike(bikeIndex))) {
                 System.out.println("Du har inte råd med den cykeln");
                 continue;
             }
-
 
 
             System.out.printf("Grattis, du köpte en %s för %.2f\n",
@@ -108,11 +135,11 @@ public class Main {
         }
         FileUtils.saveObject(customer, "customer.save");
 
-      // int userIntInput= Utils.getIntInput();  code challenge
+        // int userIntInput= Utils.getIntInput();  code challenge
 
-       // shop.getBike(0).addFeature("suspension", "hardtail");
-       // shop.getBike(0).addFeature("wheelsize", "24-inch");
-       // System.out.println(shop.getBike(0).getFeature("suspension"));
+        // shop.getBike(0).addFeature("suspension", "hardtail");
+        // shop.getBike(0).addFeature("wheelsize", "24-inch");
+        // System.out.println(shop.getBike(0).getFeature("suspension"));
         //System.out.println(shop.getBike(0).getFeature("wheelsize"));
 
       /*
@@ -167,8 +194,8 @@ public class Main {
             //System.out.println("This shirt is "+ shirt.getColor() +" and the brand is " + shirt.getBrand()+ " the price is "+ shirt.getPrice());
             //System.out.println("This one on the other hand is "+ shirt2.getColor()+" and the brand is " + shirt2.getBrand()+" the price is "+shirt2.getPrice());
             //System.out.println("These jeans are "+pants.getColor()+" they are made by "+ pants.getBrand()+" which is why they cost "+pants.getPrice());*/
-        }
-
-
     }
+
+
+}
 
