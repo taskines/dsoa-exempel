@@ -10,13 +10,67 @@ public class Main {
     public static void main(String[] args) {
 
 
-String [] testData= {"ZOZO", "Ruuben", "Kimi", "Wille"};
-String [] sortedData={"Kimi", "Ruuben", "Wille","zozo"};
+        Queuey queuey= new Queuey();
+        Graphy graphy= new Graphy();
+        queuey.enqueu("Zozo");
+        queuey.enqueu("Ruuben");
+        queuey.enqueu("Kimi");
+        System.out.println(queuey.toString());
+        System.out.println("First in line: "+ queuey.peek());
 
-        Person p1= new Person(testData[0]);
+        System.out.println("DEQUEUE: "+queuey.dequeue());
+        System.out.println(queuey.toString());
+
+        String[] testData = {"ZOZO", "Ruuben", "Kimi", "Wille"};
+        String[] sortedData = {"Kimi", "Ruuben", "Wille", "zozo"};
+
+        String [] weekDays= {"må","ti","on","to", "fr", "lö", "sö"};
+
+        int today=3;  //torsdag
+        System.out.printf("Idag är det %s\n", weekDays[today]);
+        System.out.printf("I övermorgon är det %s\n", weekDays[(today+2)% weekDays.length]);
+        System.out.printf("Om 6 dagar är det %s\n", weekDays[(today+6)% weekDays.length]);
+
+        /**
+         * Stack
+         */
+        Stacky stacky = new Stacky(5);
+        stacky.push("zozo");
+        stacky.push("ruuben");
+        stacky.push("kimi");
+        stacky.push("Juuuu");
+        stacky.push("VVVVV");
+        System.out.println(stacky.toString());
+
+
+
+        /**
+         * Linked list
+         */
+        Person frodo = new Person(testData[0]);
+        Person sam = new Person(testData[1]);
+        Person gandalf = new Person(testData[2]);
+        Person wille = new Person(testData[3]);
+
+        Linky linky = new Linky();
+        linky.add(frodo);
+        linky.add(sam);
+        linky.add(gandalf);
+
+
+        System.out.println(linky.toString());
+        System.out.println("Linky has:" + linky.size());
+        linky.add(wille);
+        System.out.println(linky.toString());
+        System.out.println("Linky has:" + linky.size());
+
+
+      /* Person p1= new Person(testData[0]);
         Person p2= new Person(testData[1], p1);
         Person p3= new Person(testData[2],p2);
         Person p4= new Person(testData[3],p3);
+
+
 
 
         Person current=p4;
@@ -25,24 +79,22 @@ String [] sortedData={"Kimi", "Ruuben", "Wille","zozo"};
             System.out.println(current.getName());
             current=current.next;
         }
+ */
 
+       /* StringArray names = new StringArray(sortedData);
+        System.out.println(names.toString());
+        names.add("Gollum");
+        System.out.println(names.toString());
 
-StringArray names= new StringArray(sortedData);
-System.out.println(names.toString());
-names.add("Gollum");
-System.out.println(names.toString());
-
-names.reverse();
-System.out.println(names.toString());
-
-
-
+        names.reverse();
+        System.out.println(names.toString());
 
 
         System.exit(0);
         // testa looppa olika tidskomplixitet
         new BigO();
 
+        */
 
 
         //upcasting
@@ -66,7 +118,7 @@ System.out.println(names.toString());
         //FileUtils.writeTextFile("Hello file", "hello.txt");
         // System.out.println(FileUtils.readTextFile("hello.txt"));
         //Customer customer;
-      //  Object loadedObject = FileUtils.loadObject("customer.save");
+        //  Object loadedObject = FileUtils.loadObject("customer.save");
         //if (loadedObject != null) {
          /*   customer = (Customer) loadedObject;
         } else {
