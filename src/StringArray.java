@@ -3,6 +3,10 @@ import java.util.Arrays;
 public class StringArray {
 
 
+    public String[] getValues() {
+        return values;
+    }
+
     String [] values;
 
 
